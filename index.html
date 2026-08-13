@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b3b60">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Yoğun Bakım Yatış Karar Desteği</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <style>
+    :root{
+      --navy:#0b3b60; --blue:#155a8a; --bg:#f4f7fa; --card:#fff;
+      --line:#d8e1e8; --text:#17232d; --muted:#5d6b76;
+      --red:#b42318; --redbg:#fef3f2; --amber:#b54708; --amberbg:#fffaeb;
+      --green:#067647; --greenbg:#ecfdf3;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    header{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:24px 18px 20px}
+    header .wrap, main{max-width:860px;margin:auto}
+    h1{font-size:25px;margin:0 0 7px}
+    .subtitle{opacity:.92;font-size:14px;line-height:1.45}
+    main{padding:16px}
+    .notice{background:#eef6fb;border:1px solid #c9e1ef;border-radius:12px;padding:12px 14px;margin-bottom:14px;font-size:13px;line-height:1.45}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px rgba(16,40,60,.04)}
+    .card h2{font-size:18px;margin:0 0 5px;color:var(--navy)}
+    .card .desc{font-size:13px;color:var(--muted);margin-bottom:12px;line-height:1.4}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    label.choice{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:11px;background:#fff;cursor:pointer}
+    label.choice:hover{background:#f8fbfd}
+    input[type=checkbox],input[type=radio]{width:19px;height:19px;flex:0 0 auto;margin-top:1px}
+    .choice span{font-size:14px;line-height:1.3}
+    .field label{display:block;font-size:12px;font-weight:650;margin-bottom:5px;color:#44535f}
+    .field input,.field select{width:100%;height:42px;border:1px solid var(--line);border-radius:9px;padding:0 10px;font-size:16px;background:white}
+    .mini{font-size:11px;color:var(--muted);margin-top:4px}
+    .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+    .actions{position:sticky;bottom:0;background:rgba(244,247,250,.94);backdrop-filter:blur(8px);padding:10px 0 6px;display:grid;grid-template-columns:1fr auto;gap:8px;z-index:3}
+    button{border:0;border-radius:10px;padding:13px 16px;font-weight:700;font-size:15px;cursor:pointer}
+    .primary{background:var(--navy);color:white}
+    .secondary{background:#e8eef3;color:#263744}
+    #installBtn{display:none;background:#fff;color:var(--navy);border:1px solid #b8d2e3;margin-top:10px;padding:9px 12px;font-size:13px}
+    .result{display:none;border-radius:14px;padding:18px;margin:15px 0;border:2px solid}
+    .result.red{display:block;background:var(--redbg);border-color:#f4b7b2;color:#7a271a}
+    .result.amber{display:block;background:var(--amberbg);border-color:#fedf89;color:#713b12}
+    .result.green{display:block;background:var(--greenbg);border-color:#abefc6;color:#05603a}
+    .result h2{margin:0 0 7px;font-size:21px}
+    .result p{margin:6px 0;line-height:1.4}
+    .result ul{margin:8px 0 0;padding-left:20px}
+    .tag{display:inline-block;font-size:12px;font-weight:700;border:1px solid currentColor;border-radius:999px;padding:4px 8px;margin-bottom:8px}
+    .warning{font-weight:800;color:#b42318}
+    details{margin-top:8px}
+    summary{cursor:pointer;font-weight:700;color:var(--navy)}
+    .sources{font-size:12px;line-height:1.45;color:var(--muted)}
+    .sources a{color:var(--blue);word-break:break-word}
+    footer{text-align:center;color:#6d7982;font-size:11px;padding:8px 16px 26px}
+    @media(max-width:700px){.grid,.grid3,.row{grid-template-columns:1fr 1fr}.actions{grid-template-columns:1fr auto}}
+    @media(max-width:460px){.grid,.grid3,.row{grid-template-columns:1fr}.actions{grid-template-columns:1fr}.actions button{width:100%}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Yoğun Bakım Yatış Karar Desteği</h1>
+    <div class="subtitle">Erişkin hastada “yoğun bakım endikasyonu var mı?” sorusuna yapılandırılmış klinik destek • v0.1.0</div>
+    <button id="installBtn">Uygulamayı yükle</button>
+  </div>
+</header>
+
+<main>
+  <div class="notice">
+    <strong>Kullanım amacı:</strong> Bu araç klinik karar desteğidir; hekim değerlendirmesinin yerine geçmez.
+    Yatak mevcudiyeti/kıt kaynak triyajı ve yoğun bakım basamaklandırması bu sürümün kapsamı dışındadır.
+    Yaş, frailty veya DNR kararı tek başına yoğun bakım kabul/red kriteri olarak kullanılmaz.
+  </div>
+
+  <section class="card">
+    <h2>1. Kritik organ desteği / acil yoğun bakım tedavisi</h2>
+    <div class="desc">Aşağıdakilerden mevcut olanları işaretleyin.</div>
+    <div class="grid">
+      <label class="choice"><input type="checkbox" class="critical" data-label="İnvaziv mekanik ventilasyon / acil havayolu yönetimi"><span>İnvaziv mekanik ventilasyon veya acil havayolu yönetimi gereksinimi</span></label>
+      <label class="choice"><input type="checkbox" class="critical" data-label="Vazopressör/inotrop gereksinimi"><span>Şok nedeniyle vazopressör veya inotrop gereksinimi</span></label>
+      <label class="choice"><input type="checkbox" class="critical" data-label="NIV/HFNO altında belirgin kötüleşme veya çok yüksek başarısızlık riski"><span>NIV/HFNO altında belirgin kötüleşme veya çok yüksek başarısızlık riski</span></label>
+      <label class="choice"><input type="checkbox" class="critical" data-label="Acil renal replasman tedavisi"><span>Acil renal replasman tedavisi gereksinimi</span></label>
+      <label class="choice"><input type="checkbox" class="critical" data-label="Status epileptikus / havayolunu koruyamama / ileri nörolojik destek"><span>Status epileptikus, havayolunu koruyamama veya ileri nörolojik destek gereksinimi</span></label>
+      <label class="choice"><input type="checkbox" class="critical" data-label="Kardiyak arrest sonrası yoğun bakım"><span>Kardiyak arrest sonrası yoğun bakım gereksinimi</span></label>
+      <label class="choice"><input type="checkbox" class="critical" data-label="Hayatı tehdit eden metabolik/elektrolit bozukluğu"><span>Hayatı tehdit eden metabolik/elektrolit bozukluğu ve yoğun tedavi gereksinimi</span></label>
+      <label class="choice"><input type="checkbox" class="critical" data-label="Masif kanama / devam eden resüsitasyon"><span>Masif kanama, devam eden resüsitasyon veya hızlı transfüzyon gereksinimi</span></label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>2. Hızlı kötüleşme / yoğun monitorizasyon gereksinimi</h2>
+    <div class="desc">Aktif organ desteği henüz başlamamış olsa bile yoğun bakım gereksinimini destekleyebilir.</div>
+    <div class="grid">
+      <label class="choice"><input type="checkbox" class="risk" data-label="Yakın solunum yetmezliği / artan oksijen gereksinimi"><span>Yakın solunum yetmezliği veya hızla artan oksijen gereksinimi</span></label>
+      <label class="choice"><input type="checkbox" class="risk" data-label="Tekrarlayan hipotansiyon / şok gelişme riski"><span>Tekrarlayan hipotansiyon veya şok gelişme riski</span></label>
+      <label class="choice"><input type="checkbox" class="risk" data-label="Hızla kötüleşen bilinç / nörolojik durum"><span>Hızla kötüleşen bilinç veya nörolojik durum</span></label>
+      <label class="choice"><input type="checkbox" class="risk" data-label="Malign/instabil aritmi riski"><span>Malign veya hemodinamik olarak instabil aritmi riski</span></label>
+      <label class="choice"><input type="checkbox" class="risk" data-label="Ağır sepsis ve organ disfonksiyonu"><span>Ağır sepsis/enfeksiyon ile gelişen veya ilerleyen organ disfonksiyonu</span></label>
+      <label class="choice"><input type="checkbox" class="risk" data-label="Majör postoperatif komplikasyon / yüksek risk"><span>Majör postoperatif komplikasyon veya hızlı müdahale gerektirebilecek yüksek risk</span></label>
+      <label class="choice"><input type="checkbox" class="risk" data-label="Ciddi zehirlenme / yakın toksik komplikasyon riski"><span>Ciddi zehirlenme veya yakın toksik komplikasyon riski</span></label>
+      <label class="choice"><input type="checkbox" class="risk" data-label="Saatlik veya sürekli ileri monitorizasyon gereksinimi"><span>Serviste sağlanamayacak sıklıkta/ileri düzey monitorizasyon gereksinimi</span></label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3. Objektif fizyolojik alarm bulguları</h2>
+    <div class="desc">Bu değerler tek başına YBÜ yatışı anlamına gelmez; klinik bağlamı güçlendiren alarm işaretleridir.</div>
+    <div class="row">
+      <div class="field"><label>Kalp hızı (/dk)</label><input id="hr" inputmode="decimal" type="number"><div class="mini">Alarm: &lt;40 veya &gt;150</div></div>
+      <div class="field"><label>Sistolik KB (mmHg)</label><input id="sbp" inputmode="decimal" type="number"><div class="mini">Alarm: &lt;80</div></div>
+      <div class="field"><label>Diyastolik KB (mmHg)</label><input id="dbp" inputmode="decimal" type="number"><div class="mini">MAP otomatik hesaplanır</div></div>
+      <div class="field"><label>MAP (mmHg)</label><input id="map" type="number" readonly><div class="mini">Alarm: &lt;60</div></div>
+      <div class="field"><label>Solunum sayısı (/dk)</label><input id="rr" inputmode="decimal" type="number"><div class="mini">Alarm: &gt;35</div></div>
+      <div class="field"><label>pH</label><input id="ph" inputmode="decimal" type="number" step="0.01"><div class="mini">Alarm: &lt;7.10 veya &gt;7.70</div></div>
+      <div class="field"><label>Sodyum (mmol/L)</label><input id="na" inputmode="decimal" type="number"><div class="mini">Alarm: &lt;110 veya &gt;170</div></div>
+      <div class="field"><label>Potasyum (mmol/L)</label><input id="k" inputmode="decimal" type="number" step="0.1"><div class="mini">Alarm: &lt;2.0 veya &gt;7.0</div></div>
+      <div class="field"><label>GKS</label><input id="gcs" inputmode="numeric" type="number" min="3" max="15"><div class="mini">≤8 ciddi alarm; bağlama göre değerlendir</div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>4. Serviste güvenli bakım mümkün mü?</h2>
+    <div class="desc">Hastanın mevcut ve öngörülebilir tedavi/monitorizasyon gereksinimini düşünün.</div>
+    <div class="grid">
+      <label class="choice"><input type="radio" name="ward" value="yes"><span><strong>Evet.</strong> Gerekli tedavi ve monitorizasyon serviste güvenli biçimde sağlanabilir.</span></label>
+      <label class="choice"><input type="radio" name="ward" value="no"><span><strong>Hayır.</strong> Gerekli tedavi/monitorizasyon serviste güvenli biçimde sağlanamaz veya anında müdahale kapasitesi gerekir.</span></label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>5. Tedavi hedefleri / beklenen klinik yarar</h2>
+    <div class="desc">Bu bölüm otomatik dışlama yapmaz; klinik yorum ve yeniden değerlendirme gereksinimini belirler.</div>
+    <div class="grid">
+      <label class="choice"><input type="checkbox" id="benefitUnclear" data-label="Yoğun bakımdan beklenen yarar belirsiz/sınırlı"><span>Yoğun bakımdan beklenen klinik yarar belirsiz veya ciddi biçimde sınırlı</span></label>
+      <label class="choice"><input type="checkbox" id="goalsUnclear" data-label="Tedavi hedefleri net değil"><span>Tedavi hedefleri / ileri bakım tercihleri net değil veya ekip-hasta/yakın görüşmesi gerekiyor</span></label>
+    </div>
+    <div class="mini" style="margin-top:10px">DNR/DNI veya ileri yaş tek başına “YBÜ endikasyonu yok” sonucuna dönüştürülmez.</div>
+  </section>
+
+  <div id="result" class="result" aria-live="polite"></div>
+
+  <div class="actions">
+    <button class="primary" id="decideBtn">Karar oluştur</button>
+    <button class="secondary" id="resetBtn">Temizle</button>
+  </div>
+
+  <section class="card">
+    <details>
+      <summary>Kaynaklar ve yöntem notu</summary>
+      <div class="sources">
+        <p><strong>SCCM:</strong> ICU Admission, Discharge, and Triage Guidelines. Crit Care Med. 2016;44(8):1553-1602.</p>
+        <p><strong>SCCM:</strong> Guidelines for the Allocation of Critical Care Resources to Adults During Crisis-Level Shortages. Crit Care Med. 2026;54(3):619-629. Bu uygulama kriz/kıt kaynak triyajı yapmaz; bu kaynak formal skorların tek başına tercih edilmesi konusunda kanıt yetersizliğini hatırlatmak için kullanılmıştır.</p>
+        <p><strong>T.C. Sağlık Bakanlığı:</strong> Yataklı Sağlık Tesislerinde Yoğun Bakım Hizmetlerinin Uygulama Usul ve Esasları Hakkında Tebliğ ve erişkin yoğun bakım değerlendirme materyalleri.</p>
+        <p><strong>ESICM:</strong> ELDICUS (European Admission Triage Scores / Intensive Care Benefit for the Elderly) ve yaşlı/frailty değerlendirmesine ilişkin çalışmalar.</p>
+        <p><strong>Not:</strong> Objektif alarm eşikleri SCCM kabul çerçevesindeki klasik fizyolojik parametrelerden türetilmiş yardımcı eşiklerdir ve tek başına otomatik yatış kararı değildir.</p>
+      </div>
+    </details>
+  </section>
+</main>
+
+<footer>Yerel/çevrimdışı çalışabilir • Klinik karar desteği • v0.1.0</footer>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const num = id => {
+    const v = $(id).value;
+    return v === "" ? null : Number(v);
+  };
+
+  function calcMAP(){
+    const s=num("sbp"), d=num("dbp");
+    $("map").value = (s!==null && d!==null) ? Math.round((s+2*d)/3) : "";
+  }
+  $("sbp").addEventListener("input",calcMAP);
+  $("dbp").addEventListener("input",calcMAP);
+
+  function checkedLabels(selector){
+    return [...document.querySelectorAll(selector+":checked")].map(x=>x.dataset.label);
+  }
+
+  function alarms(){
+    const a=[];
+    const hr=num("hr"), sbp=num("sbp"), map=num("map"), rr=num("rr"), ph=num("ph"), na=num("na"), k=num("k"), gcs=num("gcs");
+    if(hr!==null && (hr<40 || hr>150)) a.push(`Kalp hızı ${hr}/dk`);
+    if(sbp!==null && sbp<80) a.push(`Sistolik KB ${sbp} mmHg`);
+    if(map!==null && map<60) a.push(`MAP ${map} mmHg`);
+    if(rr!==null && rr>35) a.push(`Solunum sayısı ${rr}/dk`);
+    if(ph!==null && (ph<7.10 || ph>7.70)) a.push(`pH ${ph}`);
+    if(na!==null && (na<110 || na>170)) a.push(`Na ${na} mmol/L`);
+    if(k!==null && (k<2.0 || k>7.0)) a.push(`K ${k} mmol/L`);
+    if(gcs!==null && gcs<=8) a.push(`GKS ${gcs}`);
+    return a;
+  }
+
+  function render(kind,title,tag,reason,items,extra){
+    const box=$("result");
+    box.className="result "+kind;
+    const li=items.length ? `<ul>${items.map(x=>`<li>${x}</li>`).join("")}</ul>` : "";
+    box.innerHTML=`<span class="tag">${tag}</span><h2>${title}</h2><p>${reason}</p>${li}${extra||""}`;
+    box.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+
+  $("decideBtn").addEventListener("click",()=>{
+    const critical=checkedLabels(".critical");
+    const risk=checkedLabels(".risk");
+    const alarm=alarms();
+    const ward=document.querySelector('input[name="ward"]:checked')?.value || null;
+    const benefitUnclear=$("benefitUnclear").checked;
+    const goalsUnclear=$("goalsUnclear").checked;
+    const all=[...critical,...risk,...alarm.map(x=>"Objektif alarm: "+x)];
+
+    if(!critical.length && !risk.length && !alarm.length && ward===null){
+      render("amber","DEĞERLENDİRME TAMAMLANMADI","Eksik veri",
+        "En azından kritik durum/risk alanlarını ve serviste güvenli bakım sorusunu değerlendirin.",[], "");
+      return;
+    }
+
+    if(critical.length>0){
+      let extra = (benefitUnclear||goalsUnclear)
+        ? `<p class="warning">Yoğun bakım gereksinimi klinik olarak güçlü; ancak tedavi hedefleri/beklenen yarar ayrıca kıdemli klinik değerlendirme ve hasta-yakın görüşmesi gerektirir.</p>` : "";
+      render("red","YOĞUN BAKIM ENDİKASYONU VAR","Kırmızı",
+        "Yoğun bakım dışında sağlanamayacak kritik organ desteği veya acil kritik bakım gereksinimi saptandı.",
+        all,extra);
+      return;
+    }
+
+    if(ward==="no" && (risk.length>0 || alarm.length>0)){
+      render("red","YOĞUN BAKIM ENDİKASYONU VAR","Kırmızı",
+        "Aktif kritik organ desteği henüz işaretlenmemiş olsa da klinik risk/alarm bulguları ile birlikte gerekli bakımın serviste güvenli sağlanamayacağı belirtildi.",
+        all,
+        (benefitUnclear||goalsUnclear)?`<p class="warning">Tedavi hedefleri ve beklenen yarar eş zamanlı olarak netleştirilmelidir.</p>`:"");
+      return;
+    }
+
+    if(risk.length>0 || alarm.length>0 || benefitUnclear || goalsUnclear || ward===null){
+      const items=[...all];
+      if(benefitUnclear) items.push("Yoğun bakımdan beklenen yarar belirsiz/sınırlı");
+      if(goalsUnclear) items.push("Tedavi hedefleri net değil");
+      render("amber","YOĞUN BAKIM DEĞERLENDİRMESİ / YAKIN YENİDEN DEĞERLENDİRME GEREKLİ","Sarı",
+        ward==="yes"
+          ? "Risk/alarm bulguları mevcut, ancak mevcut gereksinimlerin serviste güvenli sağlanabildiği belirtildi. Klinik gidişe göre erken yeniden değerlendirme gerekir."
+          : "Mevcut bilgiler kesin bir 'yatış yok' kararı için yeterli değil. Yoğun bakım değerlendirmesi veya yakın yeniden değerlendirme uygundur.",
+        items,
+        `<p><strong>Yeniden değerlendirme tetikleyicileri:</strong> yeni organ desteği gereksinimi, artan oksijen/NIV ihtiyacı, hipotansiyon/vasoaktif gereksinim, bilinç kötüleşmesi, yeni ciddi aritmi veya serviste güvenli bakımın sürdürülememesi.</p>`);
+      return;
+    }
+
+    if(ward==="yes" && critical.length===0 && risk.length===0 && alarm.length===0){
+      render("green","YOĞUN BAKIM ENDİKASYONU YOK","Yeşil",
+        "Bu değerlendirmede yoğun bakım düzeyinde organ desteği, belirgin hızlı kötüleşme riski veya objektif alarm bulgusu saptanmadı ve mevcut bakımın serviste güvenli sağlanabileceği belirtildi.",
+        [],
+        `<p><strong>Not:</strong> Klinik durum değişirse karar yeniden verilmelidir.</p>`);
+      return;
+    }
+
+    render("amber","YOĞUN BAKIM DEĞERLENDİRMESİ / YAKIN YENİDEN DEĞERLENDİRME GEREKLİ","Sarı",
+      "Mevcut bilgiler kesin sonuç için yetersiz.",all,"");
+  });
+
+  $("resetBtn").addEventListener("click",()=>{
+    document.querySelectorAll('input[type="checkbox"],input[type="radio"]').forEach(x=>x.checked=false);
+    document.querySelectorAll('input[type="number"]').forEach(x=>x.value="");
+    $("result").className="result"; $("result").innerHTML="";
+    window.scrollTo({top:0,behavior:"smooth"});
+  });
+
+  let deferredPrompt;
+  window.addEventListener("beforeinstallprompt",e=>{
+    e.preventDefault(); deferredPrompt=e; $("installBtn").style.display="inline-block";
+  });
+  $("installBtn").addEventListener("click",async()=>{
+    if(!deferredPrompt) return;
+    deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt=null;
+    $("installBtn").style.display="none";
+  });
+
+  if("serviceWorker" in navigator){
+    window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(()=>{}));
+  }
+})();
+</script>
+</body>
+</html>
