@@ -64,7 +64,7 @@
 <header>
   <div class="wrap">
     <h1>Yoğun Bakım Yatış Karar Desteği</h1>
-    <div class="subtitle">Erişkin hastada “yoğun bakım endikasyonu var mı?” sorusuna yapılandırılmış klinik destek • v0.1.0</div>
+    <div class="subtitle">Erişkin hastada “yoğun bakım endikasyonu var mı?” sorusuna yapılandırılmış klinik destek • v0.2.1</div>
     <button id="installBtn">Uygulamayı yükle</button>
   </div>
 </header>
@@ -72,7 +72,7 @@
 <main>
   <div class="notice">
     <strong>Kullanım amacı:</strong> Bu araç klinik karar desteğidir; hekim değerlendirmesinin yerine geçmez.
-    Yatak mevcudiyeti/kıt kaynak triyajı ve yoğun bakım basamaklandırması bu sürümün kapsamı dışındadır.
+    Yatak mevcudiyeti/kıt kaynak triyajı ve yoğun bakım basamaklandırması bu sürümün kapsamı dışındadır. T.C. Sağlık Bakanlığı 2025 Erişkin YBÜ Hasta Kabul ve Taburculuk Kriterleri Protokolü bu sürüme entegre edilmiştir.
     Yaş, frailty veya DNR kararı tek başına yoğun bakım kabul/red kriteri olarak kullanılmaz.
   </div>
 
@@ -92,7 +92,37 @@
   </section>
 
   <section class="card">
-    <h2>2. Hızlı kötüleşme / yoğun monitorizasyon gereksinimi</h2>
+    <h2>2. Hastalık tanısına göre YBÜ kabul endikasyonları</h2>
+    <div class="desc">T.C. Sağlık Bakanlığı 2025 protokolündeki tanı temelli kabul endikasyonlarından mevcut olanları seçin. Tanı tek başına YBÜ yatış endikasyonu oluşturmaz. Organ desteği, fizyolojik instabilite, yakın kötüleşme riski ve serviste güvenli bakım olanağı ile birlikte değerlendirilir.</div>
+    <div class="grid">
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Hemodinamik instabil akut pulmoner emboli"><span>Hemodinamik instabil akut pulmoner emboli</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Masif hemoptizi"><span>Masif hemoptizi</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Akut koroner sendrom"><span>Akut koroner sendrom</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Ağır dekompanze kalp yetmezliği"><span>Ağır dekompanze konjestif kalp yetmezliği</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Hayatı tehdit eden aritmi/kalp bloğu"><span>Hayatı tehdit eden aritmi veya kalp bloğu</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Disseke aort anevrizması"><span>Disseke aort anevrizması</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Ciddi kafa travması"><span>Ciddi kafa travması</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Akut inme/intrakraniyal kanama"><span>Akut hemorajik/iskemik inme veya intrakraniyal kanama</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Santral sinir sistemi enfeksiyonu"><span>Santral sinir sistemi enfeksiyonu</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="İlerleyici nöromüsküler disfonksiyon"><span>Solunum/kardiyovasküler izlem gerektiren ilerleyici nöromüsküler disfonksiyon</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Ağır komplike DKA/HHS"><span>Ağır komplike DKA veya koma/hemodinamik instabilite ile hiperozmolar durum</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Şiddetli metabolik asidoz"><span>Şiddetli metabolik asidoz</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Tiroid fırtınası/miksödem koması/adrenal kriz"><span>Hemodinamik instabil tiroid fırtınası, miksödem koması veya adrenal kriz</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Semptomatik ağır elektrolit bozukluğu"><span>Semptomatik ağır elektrolit bozukluğu</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Hayatı tehdit eden GİS kanama"><span>Hayatı tehdit eden gastrointestinal kanama</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Ciddi akut pankreatit/GİS perforasyonu/abdominal sepsis"><span>Ciddi akut pankreatit, GİS perforasyonu veya abdominal sepsis</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Yüksek riskli perioperatif/postoperatif hasta"><span>Yüksek riskli perioperatif veya sürekli hemodinamik/ventilatör desteği gereken postoperatif hasta</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Eklampsi/HELLP/obstetrik kanama"><span>Şiddetli gebelik hipertansiyonu, eklampsi, HELLP veya obstetrik kanama</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Çoklu organ yetmezliği/multisistem travma"><span>Çoklu organ yetmezliği veya multisistem travma</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Şiddetli yanık/çevresel yaralanma"><span>Şiddetli yanık veya ciddi çevresel yaralanma</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Kardiyopulmoner instabil hastada akut diyaliz"><span>Kardiyopulmoner instabil hastada akut diyaliz ihtiyacı</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="Rabdomiyoliz/crush/tümör lizis"><span>Rabdomiyoliz, crush veya tümör lizis sendromu</span></label>
+      <label class="choice"><input type="checkbox" class="diagnosis" data-label="İlaç/madde aşırı doz-intoksikasyon"><span>İlaç/madde aşırı doz veya intoksikasyon</span></label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3. Hızlı kötüleşme / yoğun monitorizasyon gereksinimi</h2>
     <div class="desc">Aktif organ desteği henüz başlamamış olsa bile yoğun bakım gereksinimini destekleyebilir.</div>
     <div class="grid">
       <label class="choice"><input type="checkbox" class="risk" data-label="Yakın solunum yetmezliği / artan oksijen gereksinimi"><span>Yakın solunum yetmezliği veya hızla artan oksijen gereksinimi</span></label>
@@ -107,7 +137,7 @@
   </section>
 
   <section class="card">
-    <h2>3. Objektif fizyolojik alarm bulguları</h2>
+    <h2>4. Objektif fizyolojik alarm bulguları</h2>
     <div class="desc">Bu değerler tek başına YBÜ yatışı anlamına gelmez; klinik bağlamı güçlendiren alarm işaretleridir.</div>
     <div class="row">
       <div class="field"><label>Kalp hızı (/dk)</label><input id="hr" inputmode="decimal" type="number"><div class="mini">Alarm: &lt;40 veya &gt;150</div></div>
@@ -118,12 +148,43 @@
       <div class="field"><label>pH</label><input id="ph" inputmode="decimal" type="number" step="0.01"><div class="mini">Alarm: &lt;7.10 veya &gt;7.70</div></div>
       <div class="field"><label>Sodyum (mmol/L)</label><input id="na" inputmode="decimal" type="number"><div class="mini">Alarm: &lt;110 veya &gt;170</div></div>
       <div class="field"><label>Potasyum (mmol/L)</label><input id="k" inputmode="decimal" type="number" step="0.1"><div class="mini">Alarm: &lt;2.0 veya &gt;7.0</div></div>
-      <div class="field"><label>GKS</label><input id="gcs" inputmode="numeric" type="number" min="3" max="15"><div class="mini">≤8 ciddi alarm; bağlama göre değerlendir</div></div>
+      <div class="field"><label>GKS</label><input id="gcs" inputmode="numeric" type="number" min="3" max="15"><div class="mini">Alarm: &lt;8</div></div>
+      <div class="field"><label>PaO₂ (mmHg)</label><input id="pao2" type="number"><div class="mini">Alarm: &lt;50</div></div>
+      <div class="field"><label>PaCO₂ (mmHg)</label><input id="paco2" type="number"><div class="mini">Alarm: &gt;60 veya pH&lt;7.35 iken &gt;45</div></div>
+      <div class="field"><label>Laktat (mmol/L)</label><input id="lactate" type="number" step="0.1"><div class="mini">Alarm: &gt;4</div></div>
+      <div class="field"><label>Glukoz (mg/dL)</label><input id="glucose" type="number"><div class="mini">Alarm: &gt;800</div></div>
+      <div class="field"><label>Kalsiyum (mg/dL)</label><input id="calcium" type="number" step="0.1"><div class="mini">Alarm: &gt;15</div></div>
+    </div>
+    <div class="grid" style="margin-top:10px">
+      <label class="choice"><input type="checkbox" class="objectiveFlag" data-label="Apneik/hipopneik solunum"><span>Apneik/hipopneik solunum</span></label>
+      <label class="choice"><input type="checkbox" class="objectiveFlag" data-label="Anüri"><span>Anüri</span></label>
+      <label class="choice"><input type="checkbox" class="objectiveFlag" data-label="Bilinçsiz hastada anizokori"><span>Bilinçsiz hastada anizokori</span></label>
+      <label class="choice"><input type="checkbox" class="objectiveFlag" data-label="Santral siyanoz"><span>Santral siyanoz</span></label>
+      <label class="choice"><input type="checkbox" class="objectiveFlag" data-label="Dolaşım bozukluğu bulguları"><span>Cutis marmorata / uzamış kapiller geri dönüş vb. dolaşım bozukluğu</span></label>
+      <label class="choice"><input type="checkbox" class="objectiveFlag" data-label="Toksik düzeyde ilaç/kimyasal maruziyet"><span>Toksik düzeyde ilaç veya kimyasal madde alımı/maruziyeti</span></label>
+      <label class="choice"><input type="checkbox" class="objectiveFlag" data-label="Tansiyon pnömotoraks"><span>Tansiyon pnömotoraks</span></label>
+      <label class="choice"><input type="checkbox" class="objectiveFlag" data-label="Rüptüre iç organ + hemodinamik yetmezlik"><span>Rüptüre iç organ + hemodinamik yetmezlik</span></label>
     </div>
   </section>
 
   <section class="card">
-    <h2>4. Serviste güvenli bakım mümkün mü?</h2>
+    <h2>5. NEWS erken uyarı değerlendirmesi</h2>
+    <div class="desc">Sağlık Bakanlığı protokolü acil veya yataklı servislerden YBÜ'ye geçişte mümkünse NEWS/mNEWS kullanımını önerir. NEWS tek başına kabul kararı değildir.</div>
+    <div class="row">
+      <div class="field"><label>Solunum sayısı</label><input id="news_rr" type="number"></div>
+      <div class="field"><label>SpO₂ (%)</label><input id="spo2" type="number"></div>
+      <div class="field"><label>SpO₂ skalası</label><select id="spo2scale"><option value="1">Skala 1</option><option value="2">Skala 2 (hedef %88-92)</option></select></div>
+      <div class="field"><label>Oksijen desteği</label><select id="oxygen"><option value="no">Yok</option><option value="yes">Var</option></select></div>
+      <div class="field"><label>Sistolik KB</label><input id="news_sbp" type="number"></div>
+      <div class="field"><label>Nabız</label><input id="news_hr" type="number"></div>
+      <div class="field"><label>Bilinç (AVPU)</label><select id="avpu"><option value="A">Uyanık</option><option value="V">Sözel yanıta yanıt</option><option value="P">Ağrıya yanıt</option><option value="U">Yanıtsız</option></select></div>
+      <div class="field"><label>Sıcaklık (°C)</label><input id="temp" type="number" step="0.1"></div>
+    </div>
+    <div class="notice" id="newsBox" style="margin-top:12px;margin-bottom:0"><strong>NEWS:</strong> Tüm parametreler girildiğinde otomatik hesaplanır.</div>
+  </section>
+
+  <section class="card">
+    <h2>6. Serviste güvenli bakım mümkün mü?</h2>
     <div class="desc">Hastanın mevcut ve öngörülebilir tedavi/monitorizasyon gereksinimini düşünün.</div>
     <div class="grid">
       <label class="choice"><input type="radio" name="ward" value="yes"><span><strong>Evet.</strong> Gerekli tedavi ve monitorizasyon serviste güvenli biçimde sağlanabilir.</span></label>
@@ -132,7 +193,7 @@
   </section>
 
   <section class="card">
-    <h2>5. Tedavi hedefleri / beklenen klinik yarar</h2>
+    <h2>7. Tedavi hedefleri / beklenen klinik yarar</h2>
     <div class="desc">Bu bölüm otomatik dışlama yapmaz; klinik yorum ve yeniden değerlendirme gereksinimini belirler.</div>
     <div class="grid">
       <label class="choice"><input type="checkbox" id="benefitUnclear" data-label="Yoğun bakımdan beklenen yarar belirsiz/sınırlı"><span>Yoğun bakımdan beklenen klinik yarar belirsiz veya ciddi biçimde sınırlı</span></label>
@@ -154,15 +215,16 @@
       <div class="sources">
         <p><strong>SCCM:</strong> ICU Admission, Discharge, and Triage Guidelines. Crit Care Med. 2016;44(8):1553-1602.</p>
         <p><strong>SCCM:</strong> Guidelines for the Allocation of Critical Care Resources to Adults During Crisis-Level Shortages. Crit Care Med. 2026;54(3):619-629. Bu uygulama kriz/kıt kaynak triyajı yapmaz; bu kaynak formal skorların tek başına tercih edilmesi konusunda kanıt yetersizliğini hatırlatmak için kullanılmıştır.</p>
-        <p><strong>T.C. Sağlık Bakanlığı:</strong> Yataklı Sağlık Tesislerinde Yoğun Bakım Hizmetlerinin Uygulama Usul ve Esasları Hakkında Tebliğ ve erişkin yoğun bakım değerlendirme materyalleri.</p>
+        <p><strong>T.C. Sağlık Bakanlığı:</strong> Erişkin Yoğun Bakım Ünitesine Hasta Kabul ve Taburculuk Kriterleri Protokolü. Sağlık Hizmetleri Genel Müdürlüğü, Yayın No: 1346, Eylül 2025. Tanı temelli kabul endikasyonları, objektif parametreler ve NEWS yaklaşımı entegre edilmiştir.</p>
         <p><strong>ESICM:</strong> ELDICUS (European Admission Triage Scores / Intensive Care Benefit for the Elderly) ve yaşlı/frailty değerlendirmesine ilişkin çalışmalar.</p>
         <p><strong>Not:</strong> Objektif alarm eşikleri SCCM kabul çerçevesindeki klasik fizyolojik parametrelerden türetilmiş yardımcı eşiklerdir ve tek başına otomatik yatış kararı değildir.</p>
+        <p><strong>Karar motoru:</strong> Tanı temelli kriterler tek başına kırmızı sonuç üretmez. Kırmızı sonuç için kritik organ desteği gereksinimi veya klinik risk/objektif instabilite ile birlikte serviste güvenli bakımın sağlanamaması gerekir. NEWS erken uyarı ve yeniden değerlendirme aracı olarak kullanılır.</p>
       </div>
     </details>
   </section>
 </main>
 
-<footer>Yerel/çevrimdışı çalışabilir • Klinik karar desteği • v0.1.0</footer>
+<footer>Yerel/çevrimdışı çalışabilir • Klinik karar desteği • v0.2.1</footer>
 
 <script>
 (function(){
@@ -185,17 +247,49 @@
 
   function alarms(){
     const a=[];
-    const hr=num("hr"), sbp=num("sbp"), map=num("map"), rr=num("rr"), ph=num("ph"), na=num("na"), k=num("k"), gcs=num("gcs");
+    const hr=num("hr"), sbp=num("sbp"), dbp=num("dbp"), map=num("map"), rr=num("rr"), ph=num("ph"), na=num("na"), k=num("k"), gcs=num("gcs");
+    const pao2=num("pao2"), paco2=num("paco2"), lactate=num("lactate"), glucose=num("glucose"), calcium=num("calcium");
     if(hr!==null && (hr<40 || hr>150)) a.push(`Kalp hızı ${hr}/dk`);
     if(sbp!==null && sbp<80) a.push(`Sistolik KB ${sbp} mmHg`);
+    if(dbp!==null && (dbp>120 || dbp<40)) a.push(`Diyastolik KB ${dbp} mmHg`);
     if(map!==null && map<60) a.push(`MAP ${map} mmHg`);
     if(rr!==null && rr>35) a.push(`Solunum sayısı ${rr}/dk`);
     if(ph!==null && (ph<7.10 || ph>7.70)) a.push(`pH ${ph}`);
     if(na!==null && (na<110 || na>170)) a.push(`Na ${na} mmol/L`);
     if(k!==null && (k<2.0 || k>7.0)) a.push(`K ${k} mmol/L`);
-    if(gcs!==null && gcs<=8) a.push(`GKS ${gcs}`);
+    if(gcs!==null && gcs<8) a.push(`GKS ${gcs}`);
+    if(pao2!==null && pao2<50) a.push(`PaO₂ ${pao2} mmHg`);
+    if(paco2!==null && (paco2>60 || (ph!==null && ph<7.35 && paco2>45))) a.push(`PaCO₂ ${paco2} mmHg`);
+    if(lactate!==null && lactate>4) a.push(`Laktat ${lactate} mmol/L`);
+    if(glucose!==null && glucose>800) a.push(`Glukoz ${glucose} mg/dL`);
+    if(calcium!==null && calcium>15) a.push(`Kalsiyum ${calcium} mg/dL`);
+    a.push(...checkedLabels(".objectiveFlag"));
     return a;
   }
+
+  function newsScore(){
+    const gv=id=>{const e=$(id); return (!e || e.value==="") ? null : Number(e.value);}
+    const rr=gv("news_rr"), sp=gv("spo2"), sbp=gv("news_sbp"), hr=gv("news_hr"), t=gv("temp");
+    if([rr,sp,sbp,hr,t].some(v=>v===null)) return null;
+    let total=0, single3=false, s=0;
+    if(rr<=8)s=3; else if(rr<=11)s=1; else if(rr<=20)s=0; else if(rr<=24)s=2; else s=3; total+=s; if(s===3)single3=true;
+    const oxy=$("oxygen").value==="yes";
+    if($("spo2scale").value==="1"){ if(sp<=91)s=3; else if(sp<=93)s=2; else if(sp<=95)s=1; else s=0; }
+    else { if(sp<=83)s=3; else if(sp<=85)s=2; else if(sp<=87)s=1; else if(sp<=92)s=0; else if(sp<=94)s=oxy?1:0; else if(sp<=96)s=oxy?2:0; else s=oxy?3:0; }
+    total+=s; if(s===3)single3=true; if(oxy)total+=2;
+    if(sbp<=90)s=3; else if(sbp<=100)s=2; else if(sbp<=110)s=1; else if(sbp<=219)s=0; else s=3; total+=s; if(s===3)single3=true;
+    if(hr<=40)s=3; else if(hr<=50)s=1; else if(hr<=90)s=0; else if(hr<=110)s=1; else if(hr<=130)s=2; else s=3; total+=s; if(s===3)single3=true;
+    s=$("avpu").value==="A"?0:3; total+=s; if(s===3)single3=true;
+    if(t<=35)s=3; else if(t<=36)s=1; else if(t<=38)s=0; else if(t<=39)s=1; else s=2; total+=s; if(s===3)single3=true;
+    return {score:total,single3};
+  }
+  function updateNEWS(){
+    const n=newsScore(), b=$("newsBox");
+    if(!n){b.innerHTML="<strong>NEWS:</strong> Tüm parametreleri girin.";return;}
+    let x=n.score>=7?"YBÜ değerlendirmesi/nakli düşünülmeli; yoğun bakım hekimine danışılmalı.":n.score>=5?"1 saatten sık takip ve monitörizasyon.":n.single3?"Tek parametreden 3 puan: saatlik takip ve monitörizasyon.":n.score>=1?"4-6 saatte bir takip.":"12 saatte bir takip.";
+    b.innerHTML=`<strong>NEWS: ${n.score}</strong> — ${x}`;
+  }
+  ["news_rr","spo2","spo2scale","oxygen","news_sbp","news_hr","avpu","temp"].forEach(id=>{$(id).addEventListener("input",updateNEWS);$(id).addEventListener("change",updateNEWS);});
 
   function render(kind,title,tag,reason,items,extra){
     const box=$("result");
@@ -207,14 +301,17 @@
 
   $("decideBtn").addEventListener("click",()=>{
     const critical=checkedLabels(".critical");
+    const diagnosis=checkedLabels(".diagnosis");
     const risk=checkedLabels(".risk");
     const alarm=alarms();
+    const news=newsScore();
     const ward=document.querySelector('input[name="ward"]:checked')?.value || null;
     const benefitUnclear=$("benefitUnclear").checked;
     const goalsUnclear=$("goalsUnclear").checked;
-    const all=[...critical,...risk,...alarm.map(x=>"Objektif alarm: "+x)];
+    const all=[...critical,...diagnosis.map(x=>"Tanı temelli endikasyon: "+x),...risk,...alarm.map(x=>"Objektif alarm: "+x)];
+    if(news) all.push(`NEWS: ${news.score}${news.single3?" (tek parametreden 3 puan)":""}`);
 
-    if(!critical.length && !risk.length && !alarm.length && ward===null){
+    if(!critical.length && !diagnosis.length && !risk.length && !alarm.length && !news && ward===null){
       render("amber","DEĞERLENDİRME TAMAMLANMADI","Eksik veri",
         "En azından kritik durum/risk alanlarını ve serviste güvenli bakım sorusunu değerlendirin.",[], "");
       return;
@@ -229,6 +326,13 @@
       return;
     }
 
+    if(news && news.score>=7){
+      render("amber","YOĞUN BAKIM DEĞERLENDİRMESİ / NAKLİ DÜŞÜNÜLMELİ","Sarı",
+        "NEWS ≥7. Sağlık Bakanlığı protokolü yoğun bakım hekimine danışılmasını ve YBÜ'ye naklin düşünülmesini önerir. NEWS tek başına otomatik kabul kararı değildir.",
+        all,"");
+      return;
+    }
+
     if(ward==="no" && (risk.length>0 || alarm.length>0)){
       render("red","YOĞUN BAKIM ENDİKASYONU VAR","Kırmızı",
         "Aktif kritik organ desteği henüz işaretlenmemiş olsa da klinik risk/alarm bulguları ile birlikte gerekli bakımın serviste güvenli sağlanamayacağı belirtildi.",
@@ -237,20 +341,24 @@
       return;
     }
 
-    if(risk.length>0 || alarm.length>0 || benefitUnclear || goalsUnclear || ward===null){
+    if(diagnosis.length>0 || risk.length>0 || alarm.length>0 || (news && (news.score>=5 || news.single3)) || benefitUnclear || goalsUnclear || ward===null){
       const items=[...all];
       if(benefitUnclear) items.push("Yoğun bakımdan beklenen yarar belirsiz/sınırlı");
       if(goalsUnclear) items.push("Tedavi hedefleri net değil");
       render("amber","YOĞUN BAKIM DEĞERLENDİRMESİ / YAKIN YENİDEN DEĞERLENDİRME GEREKLİ","Sarı",
         ward==="yes"
-          ? "Risk/alarm bulguları mevcut, ancak mevcut gereksinimlerin serviste güvenli sağlanabildiği belirtildi. Klinik gidişe göre erken yeniden değerlendirme gerekir."
-          : "Mevcut bilgiler kesin bir 'yatış yok' kararı için yeterli değil. Yoğun bakım değerlendirmesi veya yakın yeniden değerlendirme uygundur.",
+          ? (diagnosis.length>0
+              ? "YBÜ ile ilişkili bir tanı mevcut; ancak kritik organ desteği veya ağır objektif instabilite saptanmadı ve mevcut bakımın serviste güvenli sağlanabildiği belirtildi. Tanı tek başına YBÜ yatış endikasyonu değildir; klinik gidişe göre yeniden değerlendirme gerekir."
+              : "Risk/alarm bulguları mevcut, ancak mevcut gereksinimlerin serviste güvenli sağlanabildiği belirtildi. Klinik gidişe göre erken yeniden değerlendirme gerekir.")
+          : (diagnosis.length>0 && risk.length===0 && alarm.length===0
+              ? "YBÜ ile ilişkili bir tanı mevcut; ancak tanı tek başına yatış endikasyonu değildir. Organ desteği, fizyolojik instabilite ve bakım gereksinimi açısından klinik değerlendirme gerekir."
+              : "Mevcut bilgiler kesin bir 'yatış yok' kararı için yeterli değil. Yoğun bakım değerlendirmesi veya yakın yeniden değerlendirme uygundur."),
         items,
         `<p><strong>Yeniden değerlendirme tetikleyicileri:</strong> yeni organ desteği gereksinimi, artan oksijen/NIV ihtiyacı, hipotansiyon/vasoaktif gereksinim, bilinç kötüleşmesi, yeni ciddi aritmi veya serviste güvenli bakımın sürdürülememesi.</p>`);
       return;
     }
 
-    if(ward==="yes" && critical.length===0 && risk.length===0 && alarm.length===0){
+    if(ward==="yes" && critical.length===0 && diagnosis.length===0 && risk.length===0 && alarm.length===0 && (!news || news.score<5)){
       render("green","YOĞUN BAKIM ENDİKASYONU YOK","Yeşil",
         "Bu değerlendirmede yoğun bakım düzeyinde organ desteği, belirgin hızlı kötüleşme riski veya objektif alarm bulgusu saptanmadı ve mevcut bakımın serviste güvenli sağlanabileceği belirtildi.",
         [],
