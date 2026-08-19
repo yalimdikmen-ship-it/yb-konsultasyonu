@@ -1,7 +1,7 @@
 {
   "name": "Yoğun Bakım Yatış Karar Desteği",
   "short_name": "YBÜ Karar",
-  "description": "Erişkin yoğun bakım yatış endikasyonu için çevrimdışı klinik karar desteği.",
+  "description": "Erişkin yoğun bakım yatış endikasyonu için çevrimdışı klinik karar desteği; NEWS2 ve T.C. Sağlık Bakanlığı 1–4 önceliklendirme sistemi ile.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f4f7fa",

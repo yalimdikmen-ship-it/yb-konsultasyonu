@@ -64,16 +64,16 @@
 <header>
   <div class="wrap">
     <h1>Yoğun Bakım Yatış Karar Desteği</h1>
-    <div class="subtitle">Erişkin hastada “yoğun bakım endikasyonu var mı?” sorusuna yapılandırılmış klinik destek • v0.2.1</div>
+    <div class="subtitle">Erişkin hastada “yoğun bakım endikasyonu var mı?” sorusuna yapılandırılmış klinik destek • v0.3.0</div>
     <button id="installBtn">Uygulamayı yükle</button>
   </div>
 </header>
 
 <main>
   <div class="notice">
-    <strong>Kullanım amacı:</strong> Nihai Karar Hekimdedir: Bu sistem yalnızca bilgi sunma ve klinik değerlendirmeyi destekleme amacıyla tasarlanmış bir Klinik Karar Destek Sistemidir (KKDS). 
-    Sistem tarafından üretilen skorlar, çıktılar veya analizler tavsiye niteliğinde olup hekimin bağımsız klinik yargısının, teşhisinin ve tedavi kararının yerine geçmez.
-
+    <strong>Kullanım amacı:</strong> Bu araç klinik karar desteğidir; hekim değerlendirmesinin yerine geçmez.
+    Yatak mevcudiyeti/kıt kaynak triyajı ve yoğun bakım basamaklandırması bu sürümün kapsamı dışındadır. T.C. Sağlık Bakanlığı 2025 Erişkin YBÜ Hasta Kabul ve Taburculuk Kriterleri Protokolü bu sürüme entegre edilmiştir.
+    Yaş, frailty veya DNR kararı tek başına yoğun bakım kabul/red kriteri olarak kullanılmaz.
   </div>
 
   <section class="card">
@@ -168,8 +168,8 @@
   </section>
 
   <section class="card">
-    <h2>5. NEWS erken uyarı değerlendirmesi</h2>
-    <div class="desc">Sağlık Bakanlığı protokolü acil veya yataklı servislerden YBÜ'ye geçişte mümkünse NEWS/mNEWS kullanımını önerir. NEWS tek başına kabul kararı değildir.</div>
+    <h2>5. NEWS2 erken uyarı değerlendirmesi</h2>
+    <div class="desc">Sağlık Bakanlığı protokolü acil veya yataklı servislerden YBÜ'ye geçişte mümkünse NEWS/mNEWS kullanımını önerir. NEWS2 tek başına kabul kararı değildir.</div>
     <div class="row">
       <div class="field"><label>Solunum sayısı</label><input id="news_rr" type="number"></div>
       <div class="field"><label>SpO₂ (%)</label><input id="spo2" type="number"></div>
@@ -177,10 +177,10 @@
       <div class="field"><label>Oksijen desteği</label><select id="oxygen"><option value="no">Yok</option><option value="yes">Var</option></select></div>
       <div class="field"><label>Sistolik KB</label><input id="news_sbp" type="number"></div>
       <div class="field"><label>Nabız</label><input id="news_hr" type="number"></div>
-      <div class="field"><label>Bilinç (AVPU)</label><select id="avpu"><option value="A">Uyanık</option><option value="V">Sözel yanıta yanıt</option><option value="P">Ağrıya yanıt</option><option value="U">Yanıtsız</option></select></div>
+      <div class="field"><label>Bilinç (AVPU)</label><select id="avpu"><option value="A">Uyanık</option><option value="C">Yeni konfüzyon</option><option value="V">Sözel yanıta yanıt</option><option value="P">Ağrıya yanıt</option><option value="U">Yanıtsız</option></select></div>
       <div class="field"><label>Sıcaklık (°C)</label><input id="temp" type="number" step="0.1"></div>
     </div>
-    <div class="notice" id="newsBox" style="margin-top:12px;margin-bottom:0"><strong>NEWS:</strong> Tüm parametreler girildiğinde otomatik hesaplanır.</div>
+    <div class="notice" id="newsBox" style="margin-top:12px;margin-bottom:0"><strong>NEWS2:</strong> Tüm parametreler girildiğinde otomatik hesaplanır.</div>
   </section>
 
   <section class="card">
@@ -193,7 +193,19 @@
   </section>
 
   <section class="card">
-    <h2>7. Tedavi hedefleri / beklenen klinik yarar</h2>
+    <h2>7. T.C. Sağlık Bakanlığı YBÜ önceliklendirmesi</h2>
+    <div class="desc">Öncelik sınıfı, nihai yatış kararından ayrı değerlendirilir.</div>
+    <div class="grid">
+      <label class="choice"><input type="radio" name="priority" value="1"><span><strong>1. Öncelik:</strong> Yalnız YBÜ’de yapılabilen tedavi/takip gerektiren kritik hasta.</span></label>
+      <label class="choice"><input type="radio" name="priority" value="2"><span><strong>2. Öncelik:</strong> İnvaziv monitorizasyon ve/veya ani girişim gereksinimi gelişebilecek hasta.</span></label>
+      <label class="choice"><input type="radio" name="priority" value="3"><span><strong>3. Öncelik:</strong> İyileşme beklentisi düşük, tedavi sınırlandırılması gündeme gelebilecek kritik hasta.</span></label>
+      <label class="choice"><input type="radio" name="priority" value="4"><span><strong>4. Öncelik:</strong> YBÜ’den fayda görmeyecek kadar iyi veya fayda görmeyecek kadar kötü hasta.</span></label>
+    </div>
+    <div class="notice" style="margin-top:12px;margin-bottom:0"><strong>Not:</strong> 3. veya 4. öncelik tek başına “YBÜ endikasyonu yok” sonucu üretmez.</div>
+  </section>
+
+  <section class="card">
+    <h2>8. Tedavi hedefleri / beklenen klinik yarar</h2>
     <div class="desc">Bu bölüm otomatik dışlama yapmaz; klinik yorum ve yeniden değerlendirme gereksinimini belirler.</div>
     <div class="grid">
       <label class="choice"><input type="checkbox" id="benefitUnclear" data-label="Yoğun bakımdan beklenen yarar belirsiz/sınırlı"><span>Yoğun bakımdan beklenen klinik yarar belirsiz veya ciddi biçimde sınırlı</span></label>
@@ -217,6 +229,7 @@
         <p><strong>SCCM:</strong> Guidelines for the Allocation of Critical Care Resources to Adults During Crisis-Level Shortages. Crit Care Med. 2026;54(3):619-629. Bu uygulama kriz/kıt kaynak triyajı yapmaz; bu kaynak formal skorların tek başına tercih edilmesi konusunda kanıt yetersizliğini hatırlatmak için kullanılmıştır.</p>
         <p><strong>T.C. Sağlık Bakanlığı:</strong> Erişkin Yoğun Bakım Ünitesine Hasta Kabul ve Taburculuk Kriterleri Protokolü. Sağlık Hizmetleri Genel Müdürlüğü, Yayın No: 1346, Eylül 2025. Tanı temelli kabul endikasyonları, objektif parametreler ve NEWS yaklaşımı entegre edilmiştir.</p>
         <p><strong>ESICM:</strong> ELDICUS (European Admission Triage Scores / Intensive Care Benefit for the Elderly) ve yaşlı/frailty değerlendirmesine ilişkin çalışmalar.</p>
+        <p><strong>NEWS2:</strong> Royal College of Physicians NEWS2 sistemi; SpO₂ Scale 2 yalnız hedef SpO₂ %88–92 olarak belirlenmiş hiperkapnik solunum yetmezliği durumlarında kullanılmalıdır.</p>
         <p><strong>Not:</strong> Objektif alarm eşikleri SCCM kabul çerçevesindeki klasik fizyolojik parametrelerden türetilmiş yardımcı eşiklerdir ve tek başına otomatik yatış kararı değildir.</p>
         <p><strong>Karar motoru:</strong> Tanı temelli kriterler tek başına kırmızı sonuç üretmez. Kırmızı sonuç için kritik organ desteği gereksinimi veya klinik risk/objektif instabilite ile birlikte serviste güvenli bakımın sağlanamaması gerekir. NEWS erken uyarı ve yeniden değerlendirme aracı olarak kullanılır.</p>
       </div>
@@ -224,7 +237,7 @@
   </section>
 </main>
 
-<footer>Yerel/çevrimdışı çalışabilir • Klinik karar desteği • v0.2.1</footer>
+<footer>Yerel/çevrimdışı çalışabilir • Klinik karar desteği • v0.3.0</footer>
 
 <script>
 (function(){
@@ -285,9 +298,9 @@
   }
   function updateNEWS(){
     const n=newsScore(), b=$("newsBox");
-    if(!n){b.innerHTML="<strong>NEWS:</strong> Tüm parametreleri girin.";return;}
-    let x=n.score>=7?"YBÜ değerlendirmesi/nakli düşünülmeli; yoğun bakım hekimine danışılmalı.":n.score>=5?"1 saatten sık takip ve monitörizasyon.":n.single3?"Tek parametreden 3 puan: saatlik takip ve monitörizasyon.":n.score>=1?"4-6 saatte bir takip.":"12 saatte bir takip.";
-    b.innerHTML=`<strong>NEWS: ${n.score}</strong> — ${x}`;
+    if(!n){b.innerHTML="<strong>NEWS2:</strong> Tüm parametreleri girin.";return;}
+    let x=n.score>=7?"Yüksek klinik risk: acil/kıdemli klinik değerlendirme ve YBÜ ekibi değerlendirmesi önerilir.":n.score>=5?"Orta-yüksek klinik risk: acil klinik değerlendirme ve sık monitörizasyon gerekir.":n.single3?"Tek parametreden 3 puan: klinik eskalasyon ve yakın monitörizasyon gerekir.":n.score>=1?"Düşük risk: klinik bağlama göre yeniden değerlendirme.":"Düşük risk: rutin klinik izlem; klinik kaygı varsa skor düşük olsa da eskalasyon düşünülür.";
+    b.innerHTML=`<strong>NEWS2: ${n.score}</strong> — ${x}`;
   }
   ["news_rr","spo2","spo2scale","oxygen","news_sbp","news_hr","avpu","temp"].forEach(id=>{$(id).addEventListener("input",updateNEWS);$(id).addEventListener("change",updateNEWS);});
 
@@ -308,8 +321,10 @@
     const ward=document.querySelector('input[name="ward"]:checked')?.value || null;
     const benefitUnclear=$("benefitUnclear").checked;
     const goalsUnclear=$("goalsUnclear").checked;
+    const priority=document.querySelector('input[name="priority"]:checked')?.value || null;
     const all=[...critical,...diagnosis.map(x=>"Tanı temelli endikasyon: "+x),...risk,...alarm.map(x=>"Objektif alarm: "+x)];
-    if(news) all.push(`NEWS: ${news.score}${news.single3?" (tek parametreden 3 puan)":""}`);
+    if(news) all.push(`NEWS2: ${news.score}${news.single3?" (tek parametreden 3 puan)":""}`);
+    if(priority) all.push(`Sağlık Bakanlığı öncelik sınıfı: ${priority}`);
 
     if(!critical.length && !diagnosis.length && !risk.length && !alarm.length && !news && ward===null){
       render("amber","DEĞERLENDİRME TAMAMLANMADI","Eksik veri",
@@ -328,7 +343,7 @@
 
     if(news && news.score>=7){
       render("amber","YOĞUN BAKIM DEĞERLENDİRMESİ / NAKLİ DÜŞÜNÜLMELİ","Sarı",
-        "NEWS ≥7. Sağlık Bakanlığı protokolü yoğun bakım hekimine danışılmasını ve YBÜ'ye naklin düşünülmesini önerir. NEWS tek başına otomatik kabul kararı değildir.",
+        "NEWS2 ≥7. Sağlık Bakanlığı protokolü yoğun bakım hekimine danışılmasını ve YBÜ'ye naklin düşünülmesini önerir. NEWS2 tek başına otomatik kabul kararı değildir.",
         all,"");
       return;
     }
