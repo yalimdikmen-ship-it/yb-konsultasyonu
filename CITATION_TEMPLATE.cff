@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "Bu yazılımı bilimsel veya akademik çalışmalarda kullanıyorsanız lütfen atıf yapınız."
+title: "[PROJE ADI]"
+type: software
+
+authors:
+  - family-names: "Dikmen"
+    given-names: "Yalım"
+    orcid: "https://orcid.org/0000-0002-3122-5099"
+
+# Ortak geliştirici varsa aşağıdaki satırların başındaki # işaretlerini kaldırın:
+#  - family-names: "Aygün"
+#    given-names: "Gökhan"
+
+version: "[ÖRN. 1.0.0]"
+date-released: "2026-08-21"
+license: GPL-3.0
+
+# Repository adresini aşağıya ekleyin:
+repository-code: "https://github.com/[KULLANICI-ADI]/[REPOSITORY-ADI]"
+
+# Canlı GitHub Pages adresi varsa ekleyin:
+url: "https://[KULLANICI-ADI].github.io/[REPOSITORY-ADI]/"
