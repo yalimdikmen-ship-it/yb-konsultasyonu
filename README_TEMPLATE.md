@@ -1,6 +1,5 @@
-# [PROJE ADI]
-
-[PROJENİN KISA AÇIKLAMASI]
+# Yoğun Bakım Konsültasyonu
+Konsültasyon sırasında yoğun bakım endikasyonu konusunda karar desteği oluşturma amacıyla hazırlanmıştır.
 
 ## Amaç
 
@@ -9,9 +8,9 @@ Bu yazılım erişkin yoğun bakım pratiğinde eğitim ve klinik karar desteği
 ## Geliştiriciler
 
 - Prof. Dr. Yalım Dikmen
-- [VARSA DİĞER GELİŞTİRİCİ]
 
-Kurum: [KURUM BİLGİSİ]
+
+Kurum: İÜC. Cerrahpaşa Tıp Fakültesi
 
 ## Sürüm
 
@@ -34,8 +33,7 @@ Bu uygulamadaki algoritmalar, hesaplamalar ve klinik eşikler güncel bilimsel y
 
 ## Tıbbi Sorumluluk Reddi
 
-Bu yazılım bağımsız tanı veya tedavi kararı vermek amacıyla tasarlanmamıştır. Klinik kararlar hastanın bireysel özellikleri, güncel kılavuzlar, yerel protokoller ve sorumlu hekimin değerlendirmesi doğrultusunda verilmelidir.
-
+Bu yazılım yalnızca sağlık profesyonellerine yönelik eğitim ve klinik karar desteği amacıyla geliştirilmiştir. Bu uygulama ile elde edilen çıktılar tanı veya tedavi kararlarının yerine geçmez. Yazılım tarafından üretilen sonuçlar hastanın klinik durumu, güncel bilimsel kanıtlar, yerel protokoller ve hekimin klinik değerlendirmesi ile birlikte kullanılmalıdır. Bu yazılım ile elde edilen çıktılar tek başına karar verici değildir. Yazılımın kullanımından kaynaklanan klinik karar ve uygulamalardan kullanıcı hekim sorumludur
 Ayrıntılı açıklama için [DISCLAIMER.md](DISCLAIMER.md) dosyasına bakınız.
 
 ## Lisans
